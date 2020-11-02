@@ -11,8 +11,10 @@ function nvm-fast
 		if test (count $argv) -eq 1
 			if test -f .nvmrc
 				set target_version (cat .nvmrc)
+			else if test -f .node-version
+				set target_version (cat .node-version)
 			else
-				echo "Error: No version provided and no .nvmrc found"
+				echo "Error: No version provided and no .nvmrc or .node-version found"
 				return
 			end
 		else
